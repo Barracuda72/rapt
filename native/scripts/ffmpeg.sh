@@ -21,6 +21,7 @@ build () {
        --extra-ldflags="$LDFLAGS" \
        --extra-ldexeflags=-pie \
        --enable-cross-compile \
+       --disable-asm \
        --disable-shared \
        --enable-pic \
        --enable-static \
