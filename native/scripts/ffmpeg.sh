@@ -12,6 +12,13 @@ build () {
 
     pushd "ffmpeg-$version"
 
+    if [ "$FFMPEG_ARCH" = "x86" ]; then
+        FFMPEG_FLAGS="--disable-asm";
+    else
+        FFMPEG_FLAGS="";
+    fi;
+      
+
     ./configure --prefix="$INSTALLDIR" \
        --cc="$CC" \
        --ld="$CC" \
@@ -21,7 +28,7 @@ build () {
        --extra-ldflags="$LDFLAGS" \
        --extra-ldexeflags=-pie \
        --enable-cross-compile \
-       --disable-asm \
+       $FFMPEG_FLAGS \
        --disable-shared \
        --enable-pic \
        --enable-static \
